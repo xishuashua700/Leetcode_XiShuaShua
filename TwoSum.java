@@ -1,3 +1,11 @@
+package leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+/**
+ * Created by Edward on 23/07/2017.
+ */
 public class TwoSum {
 
     /**
