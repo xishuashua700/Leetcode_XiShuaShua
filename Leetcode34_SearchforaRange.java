@@ -28,6 +28,76 @@ public class SearchforaRange {
      * @param target
      * @return
      */
+    
+    
+    
+    public static int[] searchRange(int[] nums, int target) {
+        int[] res = {-1, -1};
+        if (nums == null || nums.length == 0) return res;
+        int start = 0;
+        int end = nums.length - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] < target) {
+                start = mid + 1;
+            } else { // 找左边，end >=
+                end = mid;
+            }
+        }
+        
+        int left;
+        if (nums[start] == target) {
+            left = start;
+        } else {
+            return res;
+        }
+        
+        start = left;
+        end = nums.length - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] > target) {
+                end = mid;  // !!! can't use "end = mid - 1", otherwise, in dead cycle
+            } else { // 找右边， start include =
+                start = mid + 1;
+            } 
+        }
+        
+        int right;
+        if (nums[end] == target) {
+            right = end;
+        } else {
+            right = end - 1;
+        }
+         
+
+        res[0] = left;
+        res[1] = right;
+        
+        return res;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) return new int[]{-1, -1};
         int start = findFirst(nums, target);
