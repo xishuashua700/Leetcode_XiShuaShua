@@ -30,6 +30,29 @@ public class SearchInsertPosition {
      * @param target
      * @return
      */
+    public static int searchInsert(int[] nums, int target) {
+
+		if(nums.length==0) return 0;
+		int l=0, h=nums.length-1;
+		
+		while(l < h){
+			int mid=(l+h)/2;
+			if(nums[mid]==target) {
+				return mid;
+			}
+			if(nums[mid]<target){
+				l=mid+1;  
+			}else{
+				h=mid;
+			}	
+		}
+		
+        if (nums[l] >= target) return l; // 找到大于或等于target的index
+		return l + 1; 
+        
+    }
+    
+    
     public int searchInsert(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
